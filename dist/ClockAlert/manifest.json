@@ -1,0 +1,10 @@
+{
+  "Name": "ClockAlert",
+  "Author": "ian-ani",
+  "Version": "1.0.0",
+  "Description": "Clock alert for the night.",
+  "UniqueID": "ian-ani.clockalert",
+  "EntryDll": "clockalert.dll",
+  "MinimumApiVersion": "4.0.0",
+  "UpdateKeys": []
+}
