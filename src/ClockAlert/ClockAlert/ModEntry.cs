@@ -12,35 +12,35 @@ namespace ClockAlert
     {
         public override void Entry(IModHelper helper)
         {
-            helper.Events.GameLoop.TimeChanged += this.ShowAlert;
+            helper.Events.GameLoop.TimeChanged += ShowAlert;
         }
 
         private static int GetTime()
         {
-            // get current time
             return Game1.timeOfDay;
         }
 
-        private static string MessageTime(int time, string location)
+        private static string GetCurrentLocation()
+        {
+            return Game1.currentLocation.Name;
+        }
+
+        private static string MessageTime(IModHelper helper, int time, string location)
         {
             // if player is away from farm
             if (location != "farm")
             {
                 // time messages
-                switch (time)
+                return time switch
                 {
-                    case 2200:
-                        return "Ya son las 10 de la noche.";
-                    case 2300:
-                        return "Son las 11 de la noche.";
-                    case 2400:
-                        return "Cuidado. Son las 12 de la noche, vete a casa.";
-                    default:
-                        break;
-                }
+                    2200 => helper.Translation.Get("time.2200"),
+                    2300 => helper.Translation.Get("time.2300"),
+                    2400 => helper.Translation.Get("time.2400"),
+                    _ => string.Empty,
+                };
             }
 
-            return "";
+            return string.Empty;
         }
 
         private void ShowAlert(object? sender, TimeChangedEventArgs e)
@@ -50,16 +50,16 @@ namespace ClockAlert
                 return;
 
             int time = GetTime();
-            string location = Game1.currentLocation.Name;
-            string message = MessageTime(time, location);
+            string location = GetCurrentLocation();
+            string message = MessageTime(Helper, time, location);
 
-            if (message != "")
-            {
-                // add message to game
-                Game1.addHUDMessage(new HUDMessage($"{message}", 2));
-                // and play sound
-                Game1.playSound("detector");
-            }
+            if (string.IsNullOrEmpty(message))
+                return;
+
+            // add message to game
+            Game1.addHUDMessage(new HUDMessage($"{ message }", 2));
+            // and play sound
+            Game1.playSound("detector");
         }
     }
 }

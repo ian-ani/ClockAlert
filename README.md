@@ -1,24 +1,32 @@
-## Tabla de contenidos
+[![Lang en](https://img.shields.io/badge/lang-en-blue?style=flat)](https://github.com/ian-ani/ClockAlert/blob/main/README.md)
+[![Lang es](https://img.shields.io/badge/lang-es-red?style=flat)](https://github.com/ian-ani/ClockAlert/blob/main/README.es.md)
 
-- [Acerca de este repositorio](#Acerca-de-este-repositorio)
-- [Uso](#Uso)
-- [Por hacer](#Por-hacer)
+## Table of contents
 
-## Acerca de este repositorio
+- [About the project](#about-the-project)
+- [Usage](#usage)
+- [Languages](#languages)
+- [To do](#to-do)
 
-Proporciona alertas en el juego cuando se hace de noche y te encuentras lejos de la granja.  
+## About the project
 
-Programa creado con **C#** y haciendo uso de **SMAPI**.  
-Probado con **Windows 10** y la versión **4.3.2** de **SMAPI**.  
+Displays in-game alerts at night if you're away from the farm. 
 
-❗ Requiere tener SMAPI instalado.
+Built with **C#** using **SMAPI**.  
+Tested on **Windows 10** with **SMAPI** version **4.3.2**.  
 
-## Uso
+❗ SMAPI should be installed.
 
-1. El mod como tal está en el directorio **dist**, el código fuente se encuentra en **src**
-2. Copia el directorio **ClockAlert** que se encuentra dentro de **dist** en la la ruta `Stardew Valley\Mods`
+## Usage
 
-## Por hacer
+1. Download the mod from the **releases** tab, source code is in the **src** folder
+2. Copy the **ClockAlert** directory from **dist** in the following path: `Stardew Valley\Mods`
 
-- Probar su uso en multijugador
-- Traducir las líneas al inglés
+## Languages
+
+- English
+- Spanish
+
+## To do
+
+- Test compatibility in multiplayer mode
