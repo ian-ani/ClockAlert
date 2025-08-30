@@ -15,17 +15,14 @@ namespace ClockAlert
             helper.Events.GameLoop.TimeChanged += this.ShowAlert;
         }
 
-        private static int GetTime(object? sender, TimeChangedEventArgs e)
+        private static int GetTime()
         {
             // get current time
             return Game1.timeOfDay;
         }
 
-        private static string MessageTime(object? sender, TimeChangedEventArgs e)
+        private static string MessageTime(int time, string location)
         {
-            int time = GetTime(sender, e);
-            string location = Game1.currentLocation.Name;
-
             // if player is away from farm
             if (location != "farm")
             {
@@ -52,10 +49,14 @@ namespace ClockAlert
             if (!Context.IsWorldReady)
                 return;
 
-            if (MessageTime(sender, e) != "")
+            int time = GetTime();
+            string location = Game1.currentLocation.Name;
+            string message = MessageTime(time, location);
+
+            if (message != "")
             {
                 // add message to game
-                Game1.addHUDMessage(new HUDMessage($"{MessageTime(sender, e)}", 2));
+                Game1.addHUDMessage(new HUDMessage($"{message}", 2));
                 // and play sound
                 Game1.playSound("detector");
             }
